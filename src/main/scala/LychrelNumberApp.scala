@@ -4,8 +4,9 @@ import scala.annotation.tailrec
 
 
 object LychrelNumberApp extends LychrelData with App {
-  searchForPalindrome(LargeInteger(number.toString), steps = max_steps).map(println)
-
+  val path = searchForPalindrome(LargeInteger(number.toString), steps = max_steps)
+  val result = path.head.toString
+  println(s"Number:\n${result}\nSize: ${result.length}")
 
   @tailrec
   def searchForPalindrome(number: LargeInteger, path: List[LargeInteger] = Nil, steps: Int = 10): List[LargeInteger] = {
@@ -20,5 +21,5 @@ object LychrelNumberApp extends LychrelData with App {
 
 trait LychrelData {
   lazy val number = 196
-  lazy val max_steps = 20000
+  lazy val max_steps = 500000
 }
